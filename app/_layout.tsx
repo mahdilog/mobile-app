@@ -20,6 +20,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     iransans: require("../assets/fonts/iransans.ttf"),
+    niconne: require("../assets/fonts/Niconne-Regular.ttf"),
     ...FontAwesome.font,
   });
 
@@ -51,6 +52,10 @@ function RootLayoutNav() {
       <Stack.Screen
         name="tour"
         options={{ headerShown: false, animation: "none" }}
+      />
+      <Stack.Screen
+        name="profile/index"
+        options={{ headerShown: false, animation: "ios" }}
       />
     </Stack>
   );
