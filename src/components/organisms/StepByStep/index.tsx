@@ -1,8 +1,8 @@
-import { Box, Text, View } from "native-base";
-import { useState } from "react";
-import { TStepByStepProps } from "./type";
-import { BaseButton } from "@/components/atoms/Button";
-import { Formik, FormikProvider } from "formik";
+import { Box, Text, View } from 'native-base';
+import { useState } from 'react';
+import { TStepByStepProps } from './type';
+import { BaseButton } from '@/src/components/atoms/Button';
+import { Formik } from 'formik';
 
 export const StepByStep = ({
   steps,
@@ -30,9 +30,7 @@ export const StepByStep = ({
             <Box w="1/2" flexWrap="nowrap" flexDirection="row">
               <BaseButton
                 onTouchEnd={() =>
-                  currentStep === steps.length
-                    ? handleSubmit()
-                    : setCurrentStep(currentStep + 1)
+                  currentStep === steps.length ? handleSubmit() : setCurrentStep(currentStep + 1)
                 }
                 w="1/2"
                 m={4}
@@ -40,9 +38,7 @@ export const StepByStep = ({
                 بعدی
               </BaseButton>
               <BaseButton
-                onTouchEnd={() =>
-                  setCurrentStep(currentStep > 1 ? currentStep - 1 : 1)
-                }
+                onTouchEnd={() => setCurrentStep(currentStep > 1 ? currentStep - 1 : 1)}
                 w="1/2"
                 m={4}
               >

@@ -1,26 +1,26 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { useFonts } from 'expo-font';
+import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect } from 'react';
 
-import { extendTheme, NativeBaseProvider } from "native-base";
-import { Provider } from "react-redux";
-import { store } from "@/src/redux/store";
-import { routes } from "../src/constants/routes";
+import { extendTheme, NativeBaseProvider } from 'native-base';
+import { Provider } from 'react-redux';
+import { store } from '@/src/shared/redux/store';
+import { routes } from '../src/constants/routes';
 
-export { ErrorBoundary } from "expo-router";
+export { ErrorBoundary } from 'expo-router';
 
 export const unstable_settings = {
-  initialRouteName: "(tabs)",
+  initialRouteName: '(tabs)',
 };
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    iransans: require("../assets/fonts/iransans.ttf"),
-    niconne: require("../assets/fonts/Niconne-Regular.ttf"),
+    iransans: require('../src/assets/fonts/iransans.ttf'),
+    niconne: require('../src/assets/fonts/Niconne-Regular.ttf'),
     ...FontAwesome.font,
   });
 
@@ -45,47 +45,47 @@ const theme = extendTheme({
   fontConfig: {
     iranSans: {
       100: {
-        normal: "iransans",
-        bold: "iransans",
+        normal: 'iransans',
+        bold: 'iransans',
       },
       200: {
-        normal: "iransans",
-        bold: "iransans",
+        normal: 'iransans',
+        bold: 'iransans',
       },
       300: {
-        normal: "iransans",
-        bold: "iransans",
+        normal: 'iransans',
+        bold: 'iransans',
       },
       400: {
-        normal: "iransans",
-        bold: "iransans",
+        normal: 'iransans',
+        bold: 'iransans',
       },
       500: {
-        normal: "iransans",
-        bold: "iransans",
+        normal: 'iransans',
+        bold: 'iransans',
       },
       600: {
-        normal: "iransans",
-        bold: "iransans",
+        normal: 'iransans',
+        bold: 'iransans',
       },
       700: {
-        normal: "iransans",
-        bold: "iransans",
+        normal: 'iransans',
+        bold: 'iransans',
       },
       800: {
-        normal: "iransans",
-        bold: "iransans",
+        normal: 'iransans',
+        bold: 'iransans',
       },
       900: {
-        normal: "iransans",
-        bold: "iransans",
+        normal: 'iransans',
+        bold: 'iransans',
       },
     },
   },
   fonts: {
-    heading: "iranSans",
-    body: "iranSans",
-    mono: "iranSans",
+    heading: 'iranSans',
+    body: 'iranSans',
+    mono: 'iranSans',
   },
 });
 
@@ -100,7 +100,7 @@ function RootLayoutNav() {
               options={{
                 headerShown: false,
                 contentStyle: {
-                  backgroundColor: "#fff",
+                  backgroundColor: '#fff',
                 },
               }}
             />
