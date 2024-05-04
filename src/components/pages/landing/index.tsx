@@ -8,14 +8,40 @@ export const LandingPage = () => {
   return (
     <View h="full" w="full">
       <LandingLayout>
-        <View>
-          <Text>Slider Should Implement Here</Text>
+        <View
+          style={{
+            marginTop: -120,
+          }}
+          mb={10}
+        >
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={{
+              transform: [{ scaleX: -1 }],
+            }}
+          >
+            <Card variant="suggest"></Card>
+            <Card variant="suggest"></Card>
+            <Card variant="suggest"></Card>
+          </ScrollView>
         </View>
-        <View h="140px">
+        <View>
           <Text textAlign="right" fontSize="22px">
             {str.attractions}
           </Text>
-          <Text>Slider Should Implement Here</Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={{
+              transform: [{ scaleX: -1 }],
+            }}
+            mb={10}
+          >
+            <Card variant="suggest"></Card>
+            <Card variant="suggest"></Card>
+            <Card variant="suggest"></Card>
+          </ScrollView>
         </View>
         <View>
           <Text textAlign="right" fontSize="22px">
@@ -27,6 +53,7 @@ export const LandingPage = () => {
             style={{
               transform: [{ scaleX: -1 }],
             }}
+            mb={10}
           >
             <Card variant="suggest"></Card>
             <Card variant="suggest"></Card>

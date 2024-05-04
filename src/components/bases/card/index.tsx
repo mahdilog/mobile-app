@@ -8,7 +8,7 @@ export const Card = ({ variant }: { variant: "option" | "suggest" }) => {
       <View
         style={[{ transform: [{ scaleX: -1 }] }]}
         p="8px"
-        m={1}
+        m={2}
         width="309px"
         height="213px"
         shadow={1}

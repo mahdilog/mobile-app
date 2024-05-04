@@ -9,7 +9,7 @@ export const LandingLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <ScrollView marginBottom="12" bg="#f5f5f5">
-        <View p={8} bg="#D9DCD6" fontFamily="body">
+        <View p={8} bg="#D9DCD6" fontFamily="body" h="208px">
           <Box justifyContent="space-between" flexDir="row" alignItems="center">
             <View bg="white" p={3} borderRadius={999} shadow={1}>
               <Text>
@@ -31,9 +31,7 @@ export const LandingLayout = ({ children }: { children: ReactNode }) => {
             </View>
           </Box>
         </View>
-        <View p={8} bg="#f5f5f5">
-          {children}
-        </View>
+        <View bg="#f5f5f5">{children}</View>
       </ScrollView>
       <View position="absolute" w="full" h="60px" bottom="0">
         <Footer />
