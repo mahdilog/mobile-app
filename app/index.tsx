@@ -1,7 +1,7 @@
-import { LandingLayout } from "@/src/layouts";
+import { LandingPage } from '@/src/components/pages/landing';
 
 const App = () => {
-  return <LandingLayout />;
+  return <LandingPage />;
 };
 
 export default App;

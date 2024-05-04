@@ -1,1 +1,1 @@
-export const routes = ["index", "login"];
+export const routes = ['index'];
