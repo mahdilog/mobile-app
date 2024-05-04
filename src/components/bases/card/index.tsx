@@ -5,7 +5,16 @@ import { Iconify } from "react-native-iconify";
 export const Card = ({ variant }: { variant: "option" | "suggest" }) => {
   if (variant === "suggest") {
     return (
-      <View p="8px" m={1} width="309px" height="213px" shadow={1} borderRadius="md" bg="#fff">
+      <View
+        style={[{ transform: [{ scaleX: -1 }] }]}
+        p="8px"
+        m={1}
+        width="309px"
+        height="213px"
+        shadow={1}
+        borderRadius="md"
+        bg="#fff"
+      >
         <View width="293px" height="134px" bg={theme.tabIconDefault}></View>
         <View display="flex" justifyContent="space-between" flexDirection="row" w="full" p={0}>
           <Text>123</Text>

@@ -21,7 +21,13 @@ export const LandingPage = () => {
           <Text textAlign="right" fontSize="22px">
             {str.suggestions + " " + str.nova + " " + str.travel}
           </Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={{
+              transform: [{ scaleX: -1 }],
+            }}
+          >
             <Card variant="suggest"></Card>
             <Card variant="suggest"></Card>
             <Card variant="suggest"></Card>
