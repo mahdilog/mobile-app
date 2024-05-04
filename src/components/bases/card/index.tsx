@@ -26,19 +26,7 @@ export const Card = ({ variant }: { variant: "option" | "suggest" }) => {
   }
   if (variant === "option") {
     return (
-      <View
-        p="8px"
-        mt="8px"
-        mb="8px"
-        width="full"
-        height="72px"
-        shadow={1}
-        borderRadius="md"
-        bg="#fff"
-        style={{
-          paddingBottom: 50,
-        }}
-      >
+      <View p="8px" mt="8px" mb="8px" width="full" shadow={1} borderRadius="md" bg="#fff">
         <Box
           flexDirection="row-reverse"
           alignItems="center"

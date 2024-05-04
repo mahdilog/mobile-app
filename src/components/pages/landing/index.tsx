@@ -11,8 +11,8 @@ export const LandingPage = () => {
         <View>
           <Text>Slider Should Implement Here</Text>
         </View>
-        <View>
-          <Text textAlign="right" height="146px">
+        <View h="140px">
+          <Text textAlign="right" fontSize="22px">
             {str.attractions}
           </Text>
           <Text>Slider Should Implement Here</Text>

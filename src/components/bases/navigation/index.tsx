@@ -10,11 +10,13 @@ export function Footer() {
   const pathname = usePathname();
   return (
     <Box
-      bg={theme.grey[200]}
+      bg={"#cccf"}
       alignItems="center"
       flexDirection="row"
       justifyContent="space-around"
       w="full"
+      pl={8}
+      pr={8}
       shadow={6}
       borderTopRadius={16}
     >
@@ -25,16 +27,25 @@ export function Footer() {
           onPress={() => router.navigate(item.route)}
           key={index}
         >
-          <Center>
-            <Text>
-              {index === 0 ? (
-                <Iconify icon="mdi:earth" size={24} color={theme.blue[100]} />
-              ) : index === 1 ? (
-                <Iconify icon="mdi:home" size={24} color={theme.blue[100]} />
-              ) : (
-                <Iconify icon="heroicons:ticket" size={24} color={theme.blue[100]} />
-              )}
-            </Text>
+          <Center
+            borderWidth={pathname.includes(item.route) ? 4 : 0}
+            padding="2"
+            borderRadius="9999"
+            w="60px"
+            borderColor={"#fff"}
+            h="60px"
+            style={{
+              marginTop: pathname.includes(item.route) ? -50 : -10,
+            }}
+            bg={"#cccf"}
+          >
+            {index === 0 ? (
+              <Iconify icon="mdi:earth" size={24} color={theme.blue[100]} />
+            ) : index === 1 ? (
+              <Iconify icon="mdi:home" size={24} color={theme.blue[100]} />
+            ) : (
+              <Iconify icon="heroicons:ticket" size={24} color={theme.blue[100]} />
+            )}
             <Text color={theme.blue[100]} fontSize="12">
               {item.text}
             </Text>
