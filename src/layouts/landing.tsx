@@ -32,7 +32,7 @@ export const LandingLayout = ({ children }: { children: ReactNode }) => {
               icon="mdi:user"
               size={24}
               color="#2F6690"
-              onTouchEnd={() => router.navigate("/login")}
+              onTouchEnd={() => router.navigate("/UserProfileScreen")}
             />
           </Text>
         </View>

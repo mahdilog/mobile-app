@@ -1,1 +1,1 @@
-export const routes = ['index'];
+export const routes = ["index", "UserProfileScreen"];
