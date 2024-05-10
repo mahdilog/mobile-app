@@ -15,6 +15,7 @@ export const LandingPage = () => {
         <View
           style={{
             marginTop: -120,
+            zIndex: 100,
           }}
           mb={10}
         >
