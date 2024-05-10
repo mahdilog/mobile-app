@@ -8,7 +8,7 @@ export const LandingLayout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   return (
     <>
-      <ScrollView marginBottom="12" bg="#f5f5f5">
+      <ScrollView marginBottom={14} pt={8} bg="#f5f5f5">
         <View p={8} bg="#D9DCD6" fontFamily="body" h="208px">
           <Box justifyContent="space-between" flexDir="row" alignItems="center">
             <View bg="white" p={3} borderRadius={999} shadow={1}>
