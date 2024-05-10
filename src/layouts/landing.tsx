@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { Box, ScrollView, Text, useDisclose, View } from "native-base";
+import { Box, ScrollView, Text, View } from "native-base";
 import { Iconify } from "react-native-iconify";
 import { Footer } from "../components/bases/navigation";
 import { ReactNode } from "react";

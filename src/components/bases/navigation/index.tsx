@@ -1,7 +1,6 @@
-import { Box, Center, HStack, Pressable, Text, View } from "native-base";
-import { useState } from "react";
+import { Box, Center, Pressable, Text } from "native-base";
 import { Iconify } from "react-native-iconify";
-import { navgationItems } from "./constant";
+import { navigationItems } from "./constant";
 import { usePathname, useRouter } from "expo-router";
 import { theme } from "@/src/constants/Colors";
 
@@ -20,7 +19,7 @@ export function Footer() {
       shadow={6}
       borderTopRadius={16}
     >
-      {navgationItems.map((item, index) => (
+      {navigationItems.map((item, index) => (
         <Pressable
           opacity={pathname.includes(item.route) ? 1 : 0.5}
           py="3"
