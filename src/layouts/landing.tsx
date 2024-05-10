@@ -53,11 +53,8 @@ export const LandingLayout = ({ children }: { children: ReactNode }) => {
           </Text>
         </View>
       </View>
-      <ScrollView marginBottom="12" bg="#D9DCD6">
-        <View bg="#f5f5f5">
-          <View h={"130px"} backgroundColor="#D9DCD6" />
-          {children}
-        </View>
+      <ScrollView marginBottom={16} pt={"32"} bg="#f5f5f5">
+        <View bg="#f5f5f5">{children}</View>
       </ScrollView>
       <View position="absolute" w="full" h="60px" bottom="0">
         <Footer />

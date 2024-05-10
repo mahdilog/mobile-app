@@ -8,6 +8,7 @@ import { extendTheme, NativeBaseProvider } from "native-base";
 import { Provider } from "react-redux";
 import { store } from "@/src/shared/redux/store";
 import { routes } from "../src/constants/routes";
+import { StatusBar } from "react-native";
 
 export { ErrorBoundary } from "expo-router";
 
@@ -93,6 +94,7 @@ function RootLayoutNav() {
   return (
     <Provider store={store}>
       <NativeBaseProvider theme={theme}>
+        <StatusBar backgroundColor="#fff" barStyle="dark-content" />
         <Stack>
           {routes.map((route) => (
             <Stack.Screen
