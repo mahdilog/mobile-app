@@ -55,7 +55,7 @@ export const LandingPage = () => {
             </Card>
           </ScrollView>
         </View>
-        <View paddingX={8} paddingY={4} mb={8}>
+        <View paddingX={4} paddingY={4} mb={8}>
           <Pressable
             style={{
               width: "100%",
@@ -76,7 +76,7 @@ export const LandingPage = () => {
               shadowOpacity: 1,
             }}
           >
-            <Iconify icon="fluent-emoji-flat:beach-with-umbrella" size={20} />
+            <Iconify icon="fluent-emoji-flat:airplane-departure" size={40} />
             <View>
               <Text textAlign="right" color="#3A7CA5" fontSize="sm">
                 پرواز لحظه آخری
@@ -190,7 +190,7 @@ export const LandingPage = () => {
                 gap: 8,
               }}
             >
-              <Text>قوانین و مقررات</Text>
+              <Text onPress={() => router.navigate("/rules")}>قوانین و مقررات</Text>
               <View
                 style={{
                   borderWidth: 1,
