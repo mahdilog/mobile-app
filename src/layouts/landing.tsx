@@ -26,14 +26,10 @@ export const LandingLayout = ({ children }: { children: ReactNode }) => {
           alignItems="center"
           borderRadius={999}
           shadow={1}
+          onTouchEnd={() => router.navigate("/login")}
         >
           <Text>
-            <Iconify
-              icon="mdi:user"
-              size={24}
-              color="#2F6690"
-              onTouchEnd={() => router.navigate("/login")}
-            />
+            <Iconify icon="mdi:user" size={24} color="#2F6690" />
           </Text>
         </View>
         <View>
