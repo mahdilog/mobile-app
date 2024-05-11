@@ -1,10 +1,16 @@
-import React from "react";
-import UserProfileLayout from "./layout";
-import { Button, Text, View } from "native-base";
+import UserProfileLayout from "../../../layouts/userProfile";
+import { Text, View } from "native-base";
 import { Iconify } from "react-native-iconify";
-import { router } from "expo-router";
+import ProfileItem from "../../bases/profileItem";
+import { profileItemData } from "./constant";
+import LoginBox from "../../bases/loginBox";
+import { Switch } from "react-native";
+import { useState } from "react";
+import { expo } from "@/app.json";
 
 export default function UserProfile() {
+  const [isDark, setIsDark] = useState(false);
+  const toggleSwitch = () => setIsDark((previousState) => !previousState);
   return (
     <UserProfileLayout>
       <View position="relative" alignItems="center" top={-60}>
@@ -24,42 +30,42 @@ export default function UserProfile() {
             onTouchEnd={() => console.log("object")}
           />
         </View>
-        <View
-          backgroundColor="#fff"
-          shadow="3"
-          mt="40px"
-          mx="40px"
-          p="10px"
-          rounded="lg"
-          style={{ gap: 10 }}
-        >
-          <View flexDir="row-reverse" alignItems="center" style={{ gap: 10 }}>
-            <Iconify
-              icon="solar:user-id-outline"
-              size={30}
-              color="#3282B8"
-              onTouchEnd={() => console.log("object")}
-            />
-            <Text fontSize="17px" style={{ fontWeight: "900" }}>
-              ورود / ثبت نام
-            </Text>
-          </View>
-          <Text fontSize="16px" style={{ fontWeight: "400" }}>
-            با ورود یا ثبت نام در اپلیکیشن از امکانات ویژه کاربری بهره مند شوید
-          </Text>
-          <Button
-            variant="outline"
-            colorScheme="blue"
-            borderColor="#3282B8"
-            _text={{
-              color: "#3282B8",
-            }}
-            rounded="3xl"
-            mx="60px"
-            onPress={() => router.push("/login/")}
+        <LoginBox />
+        <View mt="70px" style={{ gap: 20 }} width="full">
+          {profileItemData("").map((item) => (
+            <ProfileItem key={item.id} title={item.title} icon={item.icon} path={item.path} />
+          ))}
+          <View
+            borderBottomColor="#6c757d51"
+            borderBottomWidth={1}
+            paddingBottom="10px"
+            px="20px"
+            width="full"
+            flexDir="row-reverse"
+            justifyContent="space-between"
+            alignItems="center"
           >
-            ورود یا ثبت نام
-          </Button>
+            <View flexDir="row" alignItems="center" style={{ gap: 10 }}>
+              <Text color="#6C757D" fontSize="20px">
+                حالت شب
+              </Text>
+              <Text>
+                <Iconify icon="material-symbols:dark-mode-outline" size={30} color="#6C757D" />
+              </Text>
+            </View>
+            <Switch
+              trackColor={{ false: "#D9D9D9", true: "#00AB73" }}
+              thumbColor="#FFFFFF"
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleSwitch}
+              value={isDark}
+              style={{ height: 15 }}
+            />
+          </View>
+        </View>
+        <View mt="60px" alignItems="center" style={{ gap: 10 }}>
+          <Text>{`Version ${expo.version}`}</Text>
+          <Text>Made with ❤️ in Iran</Text>
         </View>
       </View>
     </UserProfileLayout>

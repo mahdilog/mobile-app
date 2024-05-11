@@ -16,7 +16,6 @@ export const LandingPage = () => {
             marginTop: -120,
             zIndex: 100,
           }}
-          mb={10}
         >
           <ScrollView
             horizontal
@@ -148,7 +147,7 @@ export const LandingPage = () => {
               </Text>
             </Card>
           </ScrollView>
-          <View mb={"32"} display="flex" justifyContent="center" alignItems="center">
+          <View mb={"70px"} display="flex" justifyContent="center" alignItems="center">
             <View
               width={360}
               height={20}

@@ -3,11 +3,13 @@ import { Box, ScrollView, Text, View } from "native-base";
 import { Iconify } from "react-native-iconify";
 import { Footer } from "../components/bases/navigation";
 import { ReactNode } from "react";
+import { StatusBar } from "react-native";
 
 export const LandingLayout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   return (
     <>
+      <StatusBar backgroundColor="#D9DCD6" />
       <View
         bg="#D9DCD6"
         fontFamily="body"
@@ -54,7 +56,8 @@ export const LandingLayout = ({ children }: { children: ReactNode }) => {
           </Text>
         </View>
       </View>
-      <ScrollView marginBottom={16} pt={"32"} bg="#f5f5f5">
+      <ScrollView bg="#D9DCD6">
+        <View h={"130px"} backgroundColor="#D9DCD6" />
         <View bg="#f5f5f5">{children}</View>
       </ScrollView>
       <View position="absolute" w="full" h="60px" bottom="0">
