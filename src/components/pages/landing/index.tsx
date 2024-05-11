@@ -3,7 +3,6 @@ import { Divider, ScrollView, Text, View } from "native-base";
 import { str } from "@/src/constants/strings";
 import { Card } from "../../bases/card";
 import { Image, Pressable } from "react-native";
-import { theme } from "@/src/constants/Colors";
 import { Iconify } from "react-native-iconify";
 import { useRouter } from "expo-router";
 
@@ -165,9 +164,7 @@ export const LandingPage = () => {
               justifyContent={"center"}
               flexDirection="row-reverse"
             >
-              <Text>
-                <Iconify icon="fluent-emoji-flat:beach-with-umbrella" size={80} />
-              </Text>
+              <Iconify icon="fluent-emoji-flat:beach-with-umbrella" size={80} />
               <Text
                 textAlign={"center"}
                 fontSize={"xl"}

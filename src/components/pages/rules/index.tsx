@@ -22,7 +22,12 @@ export const Rules = () => {
           gap: 8,
         }}
       >
-        <Iconify icon="iconoir:arrow-right" size={24} onPress={() => router.navigate("/")} />
+        <Iconify
+          icon="mingcute:arrow-right-line"
+          size={24}
+          onPress={() => router.navigate("/")}
+          color="#3282B8"
+        />
         <Text>قوانین و مقررات</Text>
       </View>
       <ScrollView mt={16} pb={24} padding={10}>
