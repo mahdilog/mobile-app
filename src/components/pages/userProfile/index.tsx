@@ -38,7 +38,7 @@ export default function UserProfile() {
           <View
             borderBottomColor="#6c757d51"
             borderBottomWidth={1}
-            paddingBottom="10px"
+            paddingBottom="20px"
             px="20px"
             width="full"
             flexDir="row-reverse"
@@ -46,12 +46,10 @@ export default function UserProfile() {
             alignItems="center"
           >
             <View flexDir="row" alignItems="center" style={{ gap: 10 }}>
-              <Text color="#6C757D" fontSize="20px">
+              <Text color="#6C757D" fontSize="18px">
                 حالت شب
               </Text>
-              <Text>
-                <Iconify icon="material-symbols:dark-mode-outline" size={30} color="#6C757D" />
-              </Text>
+              <Iconify icon="material-symbols:dark-mode-outline" size={26} color="#6C757D" />
             </View>
             <Switch
               trackColor={{ false: "#D9D9D9", true: "#00AB73" }}

@@ -5,13 +5,13 @@ export function profileItemData(token: any) {
     {
       id: 1,
       title: "سوالات متداول",
-      icon: <Iconify icon="akar-icons:question" size={30} color="#6C757D" />,
-      path: "rules",
+      icon: <Iconify icon="akar-icons:question" size={26} color="#6C757D" />,
+      path: "FAQScreen",
     },
     {
       id: 2,
       title: "درباره ما",
-      icon: <Iconify icon="icon-park-outline:attention" size={30} color="#6C757D" />,
+      icon: <Iconify icon="icon-park-outline:attention" size={26} color="#6C757D" />,
       path: "rules",
     },
   ];
@@ -21,19 +21,19 @@ export function profileItemData(token: any) {
         {
           id: 4,
           title: "تغییر رمزعبور",
-          icon: <Iconify icon="material-symbols:lock" size={30} color="#6C757D" />,
+          icon: <Iconify icon="material-symbols:lock" size={26} color="#6C757D" />,
           path: "rules",
         },
         {
           id: 5,
           title: "سفرهای من",
-          icon: <Iconify icon="material-symbols:history" size={30} color="#6C757D" />,
+          icon: <Iconify icon="material-symbols:history" size={26} color="#6C757D" />,
           path: "rules",
         },
         {
           id: 6,
           title: "پشتیبانی",
-          icon: <Iconify icon="fa-solid:headset" size={30} color="#6C757D" />,
+          icon: <Iconify icon="fa-solid:headset" size={26} color="#6C757D" />,
           path: "rules",
         },
       ]

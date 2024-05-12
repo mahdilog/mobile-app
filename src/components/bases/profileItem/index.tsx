@@ -1,6 +1,7 @@
 import { router } from "expo-router";
-import { Pressable, Text } from "native-base";
+import { Pressable, Text, View } from "native-base";
 import React, { ReactNode } from "react";
+import { Iconify } from "react-native-iconify";
 
 export default function ProfileItem({
   title,
@@ -16,18 +17,20 @@ export default function ProfileItem({
       borderBottomColor="#6c757d51"
       borderBottomWidth={1}
       onPress={() => router.push(`/${path}`)}
-      paddingBottom="10px"
+      paddingBottom="20px"
       px="20px"
       width="full"
-      flexDir="row"
-      justifyContent="flex-end"
+      flexDir="row-reverse"
+      justifyContent="space-between"
       alignItems="center"
-      style={{ gap: 10 }}
     >
-      <Text color="#6C757D" fontSize="20px">
-        {title}
-      </Text>
-      <Text>{icon}</Text>
+      <View flexDir="row" alignItems="center" style={{ gap: 10 }}>
+        <Text color="#6C757D" fontSize="18px">
+          {title}
+        </Text>
+        {icon}
+      </View>
+      <Iconify icon="ep:arrow-left" size={24} color="#6c757d51" />
     </Pressable>
   );
 }
