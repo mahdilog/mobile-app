@@ -137,6 +137,7 @@ export const LoginPage = () => {
                       }}
                       placeholder="رمز عبور"
                       onChangeText={handleChange("password")}
+                      type="password"
                     />
                     {values.password && errors.password && (
                       <Text color="red.900" textAlign="right">

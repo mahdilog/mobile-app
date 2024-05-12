@@ -28,7 +28,7 @@ export const LandingLayout = ({ children }: { children: ReactNode }) => {
           alignItems="center"
           borderRadius={999}
           shadow={1}
-          onTouchEnd={() => router.navigate("/login")}
+          onTouchEnd={() => router.navigate("/UserProfileScreen")}
         >
           <Text>
             <Iconify

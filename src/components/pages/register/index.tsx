@@ -21,37 +21,51 @@ import { BaseInput } from "../../bases/inputs";
 
 export const RegisterPage = () => {
   const [step, setStep] = useState(1);
-
+  const [resError, setResError] = useState<string>("");
   const router = useRouter();
-  const submitHandler = (values: { email: string; password: string }) => {
+
+  const registerHandler = (values: {
+    userName: string;
+    email: string;
+    password: string;
+    code: string;
+  }) => {
     axios
-      .post("https://travelorganization.monster/api/User/Accounts/Login", {
-        email: values.email,
-        password: values.password,
-      })
+      .post(
+        `https://travelorganization.monster/api/User/Email/SignUpEmailValidation?code=${values.code}&email=${values.email}`,
+        {
+          userName: values.userName,
+          email: values.email,
+          password: values.password,
+        }
+      )
       .then((json) => {
-        if (json.data.isSuccess) {
-          console.log(json);
+        if (json.status === 200) {
           AsyncStorage.setItem("token", json.data.data.token.token);
-          router.replace("/");
+          router.navigate("/");
         }
       })
       .catch((error) => {
-        console.log(error);
+        setResError(error.response.data.message);
       });
   };
+
   return (
     <>
-      <Alert shadow={2} maxW="400" w="100%" colorScheme="error"></Alert>
       <View p={4} mt={20}>
         <Formik
-          validateOnMount={false}
           initialValues={{
+            userName: "",
             email: "",
             password: "",
+            code: "",
           }}
           validationSchema={Yup.object({
+            userName: Yup.string()
+              .max(15, "نام کاربری باید حداکثر 15 کارکتر باشد")
+              .required("نام کاربری خود را وارد کنید!"),
             email: Yup.string()
+              .email("ایمیل صحبح نیست!")
               .test("email", "ایمیل را به درستی وارد کنید", function (value) {
                 return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
                   value as string
@@ -66,7 +80,21 @@ export const RegisterPage = () => {
                 "رمز عبور باید شامل حداقل یک عدد، یک حرف خاص،حرف انگلیسی کوچک و بزرگ باشد"
               ),
           })}
-          onSubmit={submitHandler}
+          onSubmit={(values) => {
+            console.log(values);
+            axios
+              .post("https://travelorganization.monster/api/User/Accounts/SignUp", {
+                userName: values.userName,
+                email: values.email,
+                password: values.password,
+              })
+              .then((json) => {
+                console.log(json);
+              })
+              .catch((error) => {
+                setResError(error.response.data.message);
+              });
+          }}
         >
           {({ handleSubmit, handleChange, errors, values }) => (
             <>
@@ -88,7 +116,7 @@ export const RegisterPage = () => {
               <View mt={4}>
                 {step === 1 && (
                   <>
-                    <Text textAlign="right">ورود</Text>
+                    <Text textAlign="right">ایجاد حساب</Text>
                     <BaseInput
                       variant="underlined"
                       style={{
@@ -111,9 +139,9 @@ export const RegisterPage = () => {
                       }}
                       mt={5}
                     >
-                      <Text textAlign="right">حساب کاربری ندارید؟</Text>
+                      <Text textAlign="right">حساب کاربری دارید؟</Text>
                       <Text textAlign="right" onPress={() => router.navigate("/register")}>
-                        ثبت نام کنید
+                        وارد شوید
                       </Text>
                     </View>
                     <View width="1/4" mt={8}>
@@ -129,13 +157,14 @@ export const RegisterPage = () => {
                 )}
                 {step === 2 && (
                   <>
-                    <Text textAlign="right">رمز عبور</Text>
+                    <Text textAlign="right">ایجاد حساب</Text>
                     <BaseInput
                       variant="underlined"
                       style={{
                         textAlign: "right",
                       }}
                       placeholder="رمز عبور"
+                      type="password"
                       onChangeText={handleChange("password")}
                     />
                     {values.password && errors.password && (
@@ -143,19 +172,6 @@ export const RegisterPage = () => {
                         {errors.password}
                       </Text>
                     )}
-                    <View
-                      display="flex"
-                      flexDirection="row-reverse"
-                      style={{
-                        gap: 4,
-                      }}
-                      mt={5}
-                    >
-                      <Text textAlign="right">حساب کاربری ندارید؟</Text>
-                      <Text textAlign="right" onPress={() => router.navigate("/register")}>
-                        ثبت نام کنید
-                      </Text>
-                    </View>
                     <View
                       display="flex"
                       flexDirection="row"
@@ -167,7 +183,80 @@ export const RegisterPage = () => {
                       <Button variant="outline" onPress={() => setStep(1)} width="1/4">
                         بازگشت
                       </Button>
-                      <Button variant="outline" onPress={handleSubmit as any} width="1/4">
+                      <Button variant="outline" onPress={() => setStep(3)} width="1/4">
+                        ادامه
+                      </Button>
+                    </View>
+                  </>
+                )}
+
+                {step === 3 && (
+                  <>
+                    <Text textAlign="right">ایجاد حساب</Text>
+                    <BaseInput
+                      variant="underlined"
+                      style={{
+                        textAlign: "right",
+                      }}
+                      placeholder="نام کاربری"
+                      onChangeText={handleChange("userName")}
+                    />
+                    {values.userName && errors.userName && (
+                      <Text color="red.900" textAlign="right">
+                        {errors.userName}
+                      </Text>
+                    )}
+                    <View
+                      display="flex"
+                      flexDirection="row"
+                      style={{
+                        gap: 8,
+                      }}
+                      mt={8}
+                    >
+                      <Button variant="outline" onPress={() => setStep(2)} width="1/4">
+                        بازگشت
+                      </Button>
+                      <Button
+                        variant="outline"
+                        onPress={handleSubmit as any}
+                        onTouchEnd={() => setStep(4)}
+                        width="1/4"
+                      >
+                        ادامه
+                      </Button>
+                    </View>
+                  </>
+                )}
+
+                {step === 4 && (
+                  <>
+                    <Text textAlign="right">ایجاد حساب</Text>
+                    <BaseInput
+                      variant="underlined"
+                      style={{
+                        textAlign: "right",
+                      }}
+                      placeholder="کد فعال سازی"
+                      onChangeText={handleChange("code")}
+                    />
+                    {values.code && errors.code && (
+                      <Text color="red.900" textAlign="right">
+                        {errors.code}
+                      </Text>
+                    )}
+                    <View
+                      display="flex"
+                      flexDirection="row"
+                      style={{
+                        gap: 8,
+                      }}
+                      mt={8}
+                    >
+                      <Button variant="outline" onPress={() => setStep(2)} width="1/4">
+                        بازگشت
+                      </Button>
+                      <Button variant="outline" onPress={() => registerHandler(values)} width="1/4">
                         ورود
                       </Button>
                     </View>
