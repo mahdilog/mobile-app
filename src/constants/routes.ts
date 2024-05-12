@@ -1,1 +1,9 @@
-export const routes = ["index", "rules", "UserProfileScreen", "FAQScreen", "toures"];
+export const routes = [
+  "index",
+  "rules",
+  "login",
+  "UserProfileScreen",
+  "register",
+  "FAQScreen",
+  "toures",
+];
