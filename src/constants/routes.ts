@@ -1,1 +1,1 @@
-export const routes = ["index", "rules", "UserProfileScreen"];
+export const routes = ["index", "rules", "login", "UserProfileScreen","register"];
