@@ -1,24 +1,32 @@
 import BackLayout from "@/src/layouts/backLayout";
-import { Input, Text, View } from "native-base";
-import React from "react";
-import { Pressable } from "react-native";
-import { Iconify } from "react-native-iconify";
-import { ToursData } from "./constant";
+import { Text, View } from "native-base";
+import React, { useEffect, useState } from "react";
 import TourCard from "../../bases/tourCard";
+import axios from "axios";
+import { TourType } from "./type";
 
 export default function Toures() {
+  const [data, setData] = useState<TourType[]>();
+  useEffect(() => {
+    axios
+      .get("https://travelorganization.monster/api/Common/Landing/GetAllTours")
+      .then((json) => setData(json.data.data));
+  }, [data]);
   return (
     <BackLayout title="تورهای گردشگری" backgroundColor="#f5f5f5">
       <View mb="50px" px="5px" style={{ gap: 20 }}>
-        {ToursData.map((tour) => (
-          <TourCard
-            key={tour.id}
-            image={tour.image}
-            title={tour.title}
-            details={tour.details}
-            price={tour.price}
-          />
-        ))}
+        {data ? (
+          data.map((tour) => (
+            <TourCard
+              key={tour.id}
+              title={tour.title}
+              details={tour.services}
+              price={tour.price}
+            />
+          ))
+        ) : (
+          <Text>loading...</Text>
+        )}
       </View>
     </BackLayout>
   );
