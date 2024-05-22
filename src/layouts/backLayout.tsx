@@ -1,7 +1,7 @@
 import { router } from "expo-router";
 import { ScrollView, Text, View } from "native-base";
 import React, { ReactNode } from "react";
-import { StatusBar } from "react-native";
+import { Pressable, StatusBar } from "react-native";
 import { Iconify } from "react-native-iconify";
 
 export default function BackLayout({
@@ -30,12 +30,13 @@ export default function BackLayout({
         <Text color="#000" fontSize="18px">
           {title}
         </Text>
-        <Iconify
-          icon="radix-icons:arrow-right"
-          size={24}
-          color="#000"
-          onPress={() => router.back()}
-        />
+        <Pressable onPress={() => router.back()}>
+          <Iconify
+            icon="radix-icons:arrow-right"
+            size={24}
+            color="#000"
+          />
+        </Pressable>
       </View>
       <ScrollView px="20px" pt="30px" backgroundColor={backgroundColor}>
         {children}
