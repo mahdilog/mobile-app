@@ -1,36 +1,10 @@
-import { useRouter } from "expo-router";
-import { Divider, ScrollView, Text, View } from "native-base";
-import { Iconify } from "react-native-iconify";
+import BackLayout from "@/src/layouts/backLayout";
+import { Divider, Text, View } from "native-base";
 
 export const Rules = () => {
-  const router = useRouter();
   return (
-    <>
-      <View
-        width="100%"
-        height="24"
-        display="flex"
-        justifyContent="end"
-        flexDirection="row-reverse"
-        position="absolute"
-        mt={"4"}
-        zIndex={999}
-        paddingTop={"10"}
-        px={"10"}
-        bg="#fff"
-        style={{
-          gap: 8,
-        }}
-      >
-        <Iconify
-          icon="mingcute:arrow-right-line"
-          size={24}
-          onPress={() => router.navigate("/")}
-          color="#3282B8"
-        />
-        <Text>قوانین و مقررات</Text>
-      </View>
-      <ScrollView mt={16} pb={24} padding={10}>
+    <BackLayout title="قوانین و مقررات">
+      <View pb={24}>
         <Text textAlign="right">قوانین و مقررات عمومی</Text>
         <Text textAlign="right">
           وب سایت فلای تودی بر طبق قوانین جمهوری اسلامی ایران، قوانین مرتبط با جرائم اینترنتی و
@@ -151,7 +125,7 @@ export const Rules = () => {
           تفاوتی نمی‌کند.
         </Text>
         <Divider my={6} />
-      </ScrollView>
-    </>
+      </View>
+    </BackLayout>
   );
 };

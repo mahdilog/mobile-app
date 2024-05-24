@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Dimensions, FlatList, Image, StyleSheet, Text, View } from "react-native";
 import Animated, {
   interpolate,
-  Extrapolate,
   useSharedValue,
   Extrapolation,
   useAnimatedStyle,
@@ -66,17 +65,17 @@ export default function Carousel() {
 
   useEffect(() => {
     let listOffset = scrollx;
-    const intarval = setTimeout(() => {
-      if (listOffset + 10 < (CARD_LENGTH + SPACING * 2.3) * 2) {
+    const timeout = setTimeout(() => {
+      if (listOffset + 100 < (CARD_LENGTH + SPACING * 1.6) * 2) {
         listOffset = scrollx;
-        listOffset += CARD_LENGTH + SPACING * 2.3;
+        listOffset += CARD_LENGTH + SPACING * 1.6;
       } else {
         listOffset = 0;
       }
       ref.current?.scrollToOffset({ offset: listOffset, animated: true });
     }, 5000);
     return () => {
-      clearInterval(intarval);
+      clearTimeout(timeout);
     };
   }, [scrollx]);
 
@@ -87,13 +86,13 @@ export default function Carousel() {
   ];
 
   return (
-    <Animated.View>
+    <Animated.View style={[{ transform: [{ scaleX: -1 }] }]}>
       <Animated.FlatList
         ref={ref}
         scrollEventThrottle={16}
         showsHorizontalScrollIndicator={false}
         decelerationRate={0.8}
-        snapToInterval={CARD_LENGTH + SPACING * 2.3}
+        snapToInterval={CARD_LENGTH + SPACING * 1.6}
         disableIntervalMomentum
         disableScrollViewPanResponder
         contentContainerStyle={{ alignItems: "center" }}

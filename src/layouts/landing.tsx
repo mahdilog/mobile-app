@@ -1,9 +1,10 @@
 import { useRouter } from "expo-router";
-import { Box, ScrollView, Text, View } from "native-base";
+import { ScrollView, Text, View } from "native-base";
 import { Iconify } from "react-native-iconify";
 import { Footer } from "../components/bases/navigation";
 import { ReactNode } from "react";
 import { StatusBar } from "react-native";
+import Logo from "../components/bases/logo";
 
 export const LandingLayout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
@@ -39,9 +40,7 @@ export const LandingLayout = ({ children }: { children: ReactNode }) => {
             />
           </Text>
         </View>
-        <View>
-          <Text fontFamily="heading">نوا</Text>
-        </View>
+        <Logo />
         <View
           bg="white"
           w="50px"
@@ -56,9 +55,10 @@ export const LandingLayout = ({ children }: { children: ReactNode }) => {
           </Text>
         </View>
       </View>
-      <ScrollView bg="#D9DCD6">
-        <View h={"130px"} backgroundColor="#D9DCD6" />
-        <View bg="#f5f5f5">{children}</View>
+      <ScrollView bg="#D9DCD6" contentContainerStyle={{ flexGrow: 1 }}>
+        <View bg="#f5f5f5" style={{ flex: 1 }}>
+          {children}
+        </View>
       </ScrollView>
       <View position="absolute" w="full" h="60px" bottom="0">
         <Footer />

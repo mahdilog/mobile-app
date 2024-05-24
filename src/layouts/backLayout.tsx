@@ -24,6 +24,7 @@ export default function BackLayout({
         justifyContent="flex-end"
         pb="20px"
         shadow="2"
+        zIndex={100}
         pr="20px"
         style={{ gap: 15 }}
       >
@@ -31,11 +32,7 @@ export default function BackLayout({
           {title}
         </Text>
         <Pressable onPress={() => router.back()}>
-          <Iconify
-            icon="radix-icons:arrow-right"
-            size={24}
-            color="#000"
-          />
+          <Iconify icon="radix-icons:arrow-right" size={24} color="#000" />
         </Pressable>
       </View>
       <ScrollView px="20px" pt="30px" backgroundColor={backgroundColor}>
