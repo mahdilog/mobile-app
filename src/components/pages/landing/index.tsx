@@ -1,5 +1,5 @@
 import { LandingLayout } from "@/src/layouts";
-import {  Text, View } from "native-base";
+import { Text, View } from "native-base";
 import { Iconify } from "react-native-iconify";
 import { useRouter } from "expo-router";
 import Carousel from "../../bases/Carousel";
@@ -21,11 +21,13 @@ export const LandingPage = () => {
                 title="گردشگری در ایران"
                 description="مقصد بعدی تو از اینجا انتخاب کن"
                 icon={<Iconify icon={"fluent:building-mosque-48-filled"} size={35} color="#fff" />}
+                clickHandler={() => router.push("/iranTourism/")}
               />
               <NavigationCard
                 title="پرواز لحظه آخری"
                 description="دیرت شده؟حتما این پرواز ها رو چک کن"
                 icon={<Iconify icon="dashicons:airplane" size={35} color="#fff" />}
+                clickHandler={() => router.push("/iranTourism/")}
               />
             </View>
             <Suggestions

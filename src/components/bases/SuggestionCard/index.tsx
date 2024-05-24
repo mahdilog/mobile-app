@@ -5,7 +5,7 @@ import { Suggestion } from "../suggestions/type";
 import { router } from "expo-router";
 
 export const SuggestionCard = ({ data }: { data: Suggestion }) => {
-  const { image, off, title, descrption } = data;
+  const { id, image, off, title, descrption } = data;
   return (
     <Pressable
       style={[{ transform: [{ scaleX: -1 }], gap: 10 }]}
@@ -18,7 +18,7 @@ export const SuggestionCard = ({ data }: { data: Suggestion }) => {
       onPress={() =>
         router.push({
           pathname: "/tours/[id]",
-          params: { id: "bacon" },
+          params: { id },
         })
       }
     >

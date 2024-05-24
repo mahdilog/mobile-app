@@ -4,7 +4,7 @@ import { Divider, Text, View } from "native-base";
 export const Rules = () => {
   return (
     <BackLayout title="قوانین و مقررات">
-      <View pb={24}>
+      <View>
         <Text textAlign="right">قوانین و مقررات عمومی</Text>
         <Text textAlign="right">
           وب سایت فلای تودی بر طبق قوانین جمهوری اسلامی ایران، قوانین مرتبط با جرائم اینترنتی و
@@ -124,7 +124,6 @@ export const Rules = () => {
           کامل برگردانده خواهد شد. قیمت بلیط چارتر برای کودکان بین 2 تا 12 سال با قیمت بلیط بزرگسال
           تفاوتی نمی‌کند.
         </Text>
-        <Divider my={6} />
       </View>
     </BackLayout>
   );

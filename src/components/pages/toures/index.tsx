@@ -14,7 +14,7 @@ export default function Toures() {
   }, [data]);
   return (
     <BackLayout title="تورهای گردشگری" backgroundColor="#f5f5f5">
-      <View mb="50px" px="5px" style={{ gap: 20 }}>
+      <View style={{ gap: 20 }}>
         {data ? (
           data.map((tour) => (
             <TourCard

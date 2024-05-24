@@ -35,7 +35,14 @@ export default function BackLayout({
           <Iconify icon="radix-icons:arrow-right" size={24} color="#000" />
         </Pressable>
       </View>
-      <ScrollView px="20px" pt="30px" backgroundColor={backgroundColor}>
+      <ScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+          paddingVertical: 30,
+          paddingHorizontal: 20,
+        }}
+        backgroundColor={backgroundColor}
+      >
         {children}
       </ScrollView>
     </>

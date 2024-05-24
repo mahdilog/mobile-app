@@ -6,4 +6,7 @@ export const routes = [
   "register",
   "FAQScreen",
   "toures",
+  "support",
+  "tours/[id]",
+  "iranTourism",
 ];

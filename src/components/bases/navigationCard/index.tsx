@@ -6,9 +6,15 @@ interface NavigationCardProps {
   title: string;
   description: string;
   icon: ReactNode;
+  clickHandler: () => void;
 }
 
-export default function NavigationCard({ title, description, icon }: NavigationCardProps) {
+export default function NavigationCard({
+  title,
+  description,
+  icon,
+  clickHandler,
+}: NavigationCardProps) {
   return (
     <Pressable
       flexDirection="row-reverse"
@@ -18,6 +24,7 @@ export default function NavigationCard({ title, description, icon }: NavigationC
       shadow="3"
       padding="10px"
       borderRadius="10px"
+      onPress={clickHandler}
     >
       <View style={{ flexDirection: "row-reverse", gap: 10 }}>
         <View
