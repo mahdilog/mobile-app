@@ -8,9 +8,10 @@ import { TourType } from "./type";
 export default function Toures() {
   const [data, setData] = useState<TourType[]>();
   useEffect(() => {
-    axios
-      .get("https://travelorganization.monster/api/Common/Landing/GetAllTours")
-      .then((json) => setData(json.data.data));
+    axios.get("https://travelorganization.monster/api/Common/Landing/GetAllTours").then((json) => {
+      setData(json.data.data);
+      console.log(json);
+    });
   }, [data]);
   return (
     <BackLayout title="تورهای گردشگری" backgroundColor="#f5f5f5">
@@ -19,6 +20,10 @@ export default function Toures() {
           data.map((tour) => (
             <TourCard
               key={tour.id}
+              id={tour.id}
+              image={{
+                uri: tour.imageSource,
+              }}
               title={tour.title}
               details={tour.services}
               price={tour.price}

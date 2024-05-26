@@ -12,7 +12,7 @@ export function profileItemData(token: any) {
       id: 2,
       title: "درباره ما",
       icon: <Iconify icon="icon-park-outline:attention" size={26} color="#6C757D" />,
-      path: "rules",
+      path: "aboutus",
     },
   ];
   if (token) {
@@ -34,7 +34,7 @@ export function profileItemData(token: any) {
           id: 6,
           title: "پشتیبانی",
           icon: <Iconify icon="fa-solid:headset" size={26} color="#6C757D" />,
-          path: "rules",
+          path: "support",
         },
       ]
     );

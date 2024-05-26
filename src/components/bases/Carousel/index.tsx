@@ -1,6 +1,15 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect, useRef, useState } from "react";
-import { Dimensions, FlatList, Image, StyleSheet, Text, View } from "react-native";
+import {
+  Dimensions,
+  FlatList,
+  Image,
+  ImageBackground,
+  ImageSourcePropType,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import Animated, {
   interpolate,
   useSharedValue,
@@ -16,10 +25,11 @@ const SIDECARD_LENGTH = (SRC_WIDTH * 0.18) / 2;
 interface itemProps {
   index: number;
   scrollX: number;
-  currentIndex: number;
+  image: ImageSourcePropType;
+  title: string;
 }
 
-function Item({ index, scrollX, currentIndex }: itemProps) {
+function Item({ index, scrollX, title, image }: itemProps) {
   const size = useSharedValue(0.8);
   const inputRange = [(index - 1) * CARD_LENGTH, index * CARD_LENGTH, (index + 1) * CARD_LENGTH];
 
@@ -38,7 +48,7 @@ function Item({ index, scrollX, currentIndex }: itemProps) {
         cardStyle,
         {
           marginLeft: index === 0 ? SIDECARD_LENGTH : SPACING,
-          marginRight: index === 2 ? SIDECARD_LENGTH : SPACING,
+          marginRight: index === 3 ? SIDECARD_LENGTH : SPACING,
           height: 150,
           opacity: 1,
           transform: [{ scaleY: 1 }],
@@ -47,13 +57,22 @@ function Item({ index, scrollX, currentIndex }: itemProps) {
     >
       <LinearGradient
         // Background Linear Gradient
-        colors={["transparent", "#3282B8CC"]}
+        colors={["transparent", "#000"]}
         style={styles.background}
       />
-      <Image
-        source={require("@/src/assets/images/landing/azadi.jpg")}
-        style={{ width: "100%", height: "100%" }}
-      />
+      <ImageBackground source={image} style={{ width: "100%", height: "100%" }}>
+        <Text
+          style={{
+            transform: [{ scaleX: -1 }],
+            marginTop: 110,
+            marginLeft: 15,
+            color: "#fff",
+            zIndex: 100,
+          }}
+        >
+          {title}
+        </Text>
+      </ImageBackground>
     </Animated.View>
   );
 }
@@ -80,9 +99,26 @@ export default function Carousel() {
   }, [scrollx]);
 
   const DATA = [
-    { id: "1", title: "one Item" },
-    { id: "2", title: "two Item" },
-    { id: "3", title: "three Item" },
+    {
+      id: "1",
+      title: "پل خواجو - اصفهان",
+      image: require("@/src/assets/images/landing/Khaju-Bridge-01.jpg"),
+    },
+    {
+      id: "2",
+      title: "موزه نصیر الملک - شیراز",
+      image: require("@/src/assets/images/landing/nasi-almulk.jpg"),
+    },
+    {
+      id: "3",
+      title: "موزه امیر چخماق - یزد",
+      image: require("@/src/assets/images/landing/yazd.jpg"),
+    },
+    {
+      id: "4",
+      title: "موزه فاجار - تبریز",
+      image: require("@/src/assets/images/landing/AmirNezam.jpg"),
+    },
   ];
 
   return (
@@ -99,7 +135,7 @@ export default function Carousel() {
         data={DATA}
         horizontal
         renderItem={({ item, index }) => {
-          return <Item index={index} scrollX={scrollx} currentIndex={currentIndex} />;
+          return <Item index={index} title={item.title} image={item.image} scrollX={scrollx} />;
         }}
         keyExtractor={(item) => item.id}
         onScroll={(event) => {
@@ -114,7 +150,7 @@ export default function Carousel() {
           alignItems: "center",
           position: "absolute",
           bottom: 15,
-          left: 60,
+          right: 60,
         }}
       >
         {DATA.map((item, index) => (
@@ -155,8 +191,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
     right: 0,
-    top: 0,
-    height: 300,
-    zIndex: 100,
+    bottom: 0,
+    height: 90,
+    zIndex: 1,
   },
 });

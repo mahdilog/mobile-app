@@ -8,7 +8,7 @@ export default function LoginBox() {
     <View
       backgroundColor="#fff"
       shadow="3"
-      mt="40px"
+      my="40px"
       mx="40px"
       p="10px"
       rounded="lg"
