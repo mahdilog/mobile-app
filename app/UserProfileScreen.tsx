@@ -3,9 +3,5 @@ import UserProfile from "@/src/components/pages/userProfile";
 import ProfileProvider from "@/src/context/profile-context";
 
 export default function UserProfileScreen() {
-  return (
-    <ProfileProvider>
-      <UserProfile />
-    </ProfileProvider>
-  );
+  return <UserProfile />;
 }

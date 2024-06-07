@@ -10,5 +10,12 @@ export const routes = [
   "tours/[id]",
   "iranTourism",
   "aboutus",
-  "validation-email"
+  "validation-email",
+  "agencyList",
+  "agency/[id]",
+  "tickets/index",
+  "tickets/addTicket",
+  "userList",
+  "userDetails/[email]",
+  "tourList",
 ];

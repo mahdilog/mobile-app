@@ -10,9 +10,8 @@ export default function Toures() {
   useEffect(() => {
     axios.get("https://travelorganization.monster/api/Common/Landing/GetAllTours").then((json) => {
       setData(json.data.data);
-      console.log(json);
     });
-  }, [data]);
+  }, []);
   return (
     <BackLayout title="تورهای گردشگری" backgroundColor="#f5f5f5">
       <View style={{ gap: 20 }}>

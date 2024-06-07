@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import { ScrollView, Text, View } from "native-base";
+import { ScrollView, Spinner, Text, View } from "native-base";
 import React, { ReactNode } from "react";
 import { Pressable, StatusBar } from "react-native";
 import { Iconify } from "react-native-iconify";
@@ -8,10 +8,12 @@ export default function BackLayout({
   title,
   backgroundColor = "#fff",
   children,
+  isLoading = false,
 }: {
   title: string;
   backgroundColor?: string;
   children: ReactNode;
+  isLoading?: boolean;
 }) {
   return (
     <>
@@ -35,16 +37,22 @@ export default function BackLayout({
           <Iconify icon="radix-icons:arrow-right" size={24} color="#000" />
         </Pressable>
       </View>
-      <ScrollView
-        contentContainerStyle={{
-          flexGrow: 1,
-          paddingVertical: 30,
-          paddingHorizontal: 20,
-        }}
-        backgroundColor={backgroundColor}
-      >
-        {children}
-      </ScrollView>
+      {isLoading ? (
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+          <Spinner size="lg" color="#2F6690" />
+        </View>
+      ) : (
+        <ScrollView
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingVertical: 30,
+            paddingHorizontal: 20,
+          }}
+          backgroundColor={backgroundColor}
+        >
+          {children}
+        </ScrollView>
+      )}
     </>
   );
 }

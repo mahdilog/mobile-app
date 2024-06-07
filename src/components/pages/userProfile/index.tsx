@@ -26,7 +26,7 @@ export default function UserProfile() {
     if (storedToken) {
       setToken(storedToken);
       axios
-        .get("https://travelorganization.monster/api/User/User/GetUserDetail", {
+        .get("https://travelorganization.monster/api/Common/Common/GetUserDetail", {
           headers: {
             Authorization: `Bearer ${storedToken}`,
           },
@@ -34,6 +34,7 @@ export default function UserProfile() {
         .then((json) => {
           if (json.data.isSuccess) {
             setUserDetails(json.data.data);
+            console.log(json.data.data);
           }
         })
         .catch((e) => {
@@ -89,7 +90,7 @@ export default function UserProfile() {
           </View>
           {token ? <UserPanelBox /> : <LoginBox />}
           <View mt="30px" style={{ gap: 20 }} width="full">
-            {profileItemData(token).map((item) => (
+            {profileItemData(token, userDetails.role).map((item) => (
               <ProfileItem key={item.id} title={item.title} icon={item.icon} path={item.path} />
             ))}
             <View

@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import { store } from "@/src/shared/redux/store";
 import { routes } from "../src/constants/routes";
 import { StatusBar } from "react-native";
+import ProfileProvider from "@/src/context/profile-context";
 
 export { ErrorBoundary } from "expo-router";
 
@@ -93,22 +94,24 @@ const theme = extendTheme({
 function RootLayoutNav() {
   return (
     <Provider store={store}>
-      <NativeBaseProvider theme={theme}>
-        <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-        <Stack>
-          {routes.map((route) => (
-            <Stack.Screen
-              name={route}
-              options={{
-                headerShown: false,
-                contentStyle: {
-                  backgroundColor: "#fff",
-                },
-              }}
-            />
-          ))}
-        </Stack>
-      </NativeBaseProvider>
+      <ProfileProvider>
+        <NativeBaseProvider theme={theme}>
+          <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+          <Stack>
+            {routes.map((route) => (
+              <Stack.Screen
+                name={route}
+                options={{
+                  headerShown: false,
+                  contentStyle: {
+                    backgroundColor: "#fff",
+                  },
+                }}
+              />
+            ))}
+          </Stack>
+        </NativeBaseProvider>
+      </ProfileProvider>
     </Provider>
   );
 }
