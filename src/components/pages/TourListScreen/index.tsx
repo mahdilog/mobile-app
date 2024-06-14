@@ -1,11 +1,10 @@
 import BackLayout from "@/src/layouts/backLayout";
 import { Heading, Pressable, Text, View } from "native-base";
 import React, { useEffect, useState } from "react";
-import SearchInput from "../../bases/searchInput";
-import { Iconify } from "react-native-iconify";
 import axios from "axios";
 import { useProfileContext } from "@/src/context/profile-context";
 import { router } from "expo-router";
+import HeaderList from "../../bases/HeaderList";
 
 type tourListType = {
   id: number;
@@ -67,28 +66,12 @@ export default function TourListScreen() {
   return (
     <BackLayout title="لیست تورها" backgroundColor="#f5f5f5" isLoading={loading}>
       <View style={{ gap: 15 }}>
-        <View flexDirection="row-reverse" alignItems="center" mb="15px" style={{ gap: 8 }}>
-          <View style={{ flex: 1 }}>
-            <SearchInput
-              search={search}
-              setSearch={setSearch}
-              submitSearch={() => console.log("object")}
-            />
-          </View>
-          <Pressable
-            flexDirection="row-reverse"
-            borderColor="#3282B8"
-            borderWidth="1px"
-            borderRadius="8px"
-            height="full"
-            alignItems="center"
-            justifyContent="center"
-            width="80px"
-          >
-            <Iconify icon="ic:baseline-plus" size={20} color="#3282B8" />
-            <Text color="#3282B8">افزودن</Text>
-          </Pressable>
-        </View>
+        <HeaderList
+          search={search}
+          setSearch={setSearch}
+          submitSearch={() => console.log(search)}
+          addHandler={() => router.push("/addTour/")}
+        />
         {data?.map((item) => <TourItem key={item.id} {...item} />)}
       </View>
     </BackLayout>

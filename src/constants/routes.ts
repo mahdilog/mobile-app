@@ -18,4 +18,6 @@ export const routes = [
   "userList",
   "userDetails/[email]",
   "tourList",
+  "addTour",
+  "addAgency",
 ];

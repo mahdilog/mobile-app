@@ -2,9 +2,9 @@ import { Platform, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    borderColor: "#AAAAAA",
-    borderWidth: 1,
-    borderRadius: 5,
+    borderColor: "#6C757D",
+    borderWidth: 0.5,
+    borderRadius: 8,
     paddingHorizontal: 8,
     height: 40,
     position: "relative",
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 2,
     backgroundColor: "#fff",
     textAlign: "center",
-    color: "#AAAAAA",
+    color: "#6C757D",
   },
   input: {
     width: "100%",

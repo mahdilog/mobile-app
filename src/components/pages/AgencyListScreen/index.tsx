@@ -4,6 +4,7 @@ import axios from "axios";
 import { router } from "expo-router";
 import { Heading, Image, Pressable, Text, View } from "native-base";
 import React, { useEffect, useState } from "react";
+import HeaderList from "../../bases/HeaderList";
 
 type dataType = {
   id: number;
@@ -41,6 +42,7 @@ function AgencyItem(props: dataType) {
 export default function AgencyListScreen() {
   const { token } = useProfileContext();
   const [data, setData] = useState<dataType[]>();
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     console.log(token);
@@ -63,6 +65,12 @@ export default function AgencyListScreen() {
   return (
     <BackLayout title="لیست آژانس‌ها" backgroundColor="#f5f5f5">
       <View style={{ gap: 15 }}>
+        <HeaderList
+          search={search}
+          setSearch={setSearch}
+          addHandler={() => router.push("/addAgency/")}
+          submitSearch={() => console.log(search)}
+        />
         {data?.map((item) => (
           <AgencyItem key={item.id} id={item.id} agencyName={item.agencyName} />
         ))}

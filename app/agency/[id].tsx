@@ -9,7 +9,11 @@ import React, { useEffect, useState } from "react";
 export type agencyDataType = {
   address: string;
   agencyName: string;
+  email: string;
+  managerName: string;
   phoneNo: string;
+  phoneNo2: string;
+  startDate: string;
 };
 
 export default function AgencyDetails() {

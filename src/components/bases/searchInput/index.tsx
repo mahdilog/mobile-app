@@ -2,15 +2,13 @@ import { Input, Pressable } from "native-base";
 import React from "react";
 import { Iconify } from "react-native-iconify";
 
-export default function SearchInput({
-  search,
-  setSearch,
-  submitSearch,
-}: {
+export interface SearchInputProps {
   search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
   submitSearch: () => void;
-}) {
+}
+
+export default function SearchInput({ search, setSearch, submitSearch }: SearchInputProps) {
   return (
     <Input
       variant="unstyled"
