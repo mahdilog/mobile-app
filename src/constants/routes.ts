@@ -20,4 +20,5 @@ export const routes = [
   "tourList",
   "addTour",
   "addAgency",
+  "userTicket",
 ];

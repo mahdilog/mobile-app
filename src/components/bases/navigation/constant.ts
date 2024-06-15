@@ -16,6 +16,6 @@ export const navigationItems: {
   {
     text: "بلیط",
     icon: "heroicons:ticket",
-    route: "/tickets",
+    route: "/userTicket",
   },
 ];
