@@ -1,9 +1,11 @@
 import Logo from "@/src/components/bases/logo";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { useRouter } from "expo-router";
 import { Button, ScrollView, Text, View } from "native-base";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Iconify } from "react-native-iconify";
+import { ReserveTicket } from "./reserveTicket";
 
 export const SearchPage = ({
   setShowSearchPage,
@@ -13,6 +15,7 @@ export const SearchPage = ({
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("airplane");
   const [error, setError] = useState(false);
+  const [currentData, setCurrentData] = useState<any>();
   const [data, setData] = useState<any>({
     train: [],
     bus: [],
@@ -34,6 +37,7 @@ export const SearchPage = ({
         }
       )
       .then((json) => {
+        const storedToken = AsyncStorage.getItem("token");
         if (json.data.isSuccess) {
           setData({ ...data, [activeTab]: json.data.data });
         }
@@ -232,7 +236,7 @@ export const SearchPage = ({
                     }}
                   >
                     <Text>هزینه بلیط:</Text>
-                    <Text>506٬769٬000 ریال</Text>
+                    <Text>{item.price} ریال</Text>
                   </View>
                   <Button
                     variant="outline"
@@ -240,7 +244,10 @@ export const SearchPage = ({
                       marginTop: 36,
                       borderRadius: 10,
                     }}
-                    onPress={() => setError(true)}
+                    onPress={() => {
+                      setError(true);
+                      setCurrentData(item);
+                    }}
                   >
                     رزرو بلیط
                   </Button>
@@ -250,29 +257,7 @@ export const SearchPage = ({
           </ScrollView>
         </>
       ) : (
-        <View
-          style={{
-            paddingTop: 300,
-            padding: 36,
-            backgroundColor: "#3282B8",
-            height: "100%",
-          }}
-        >
-          <Text textAlign="right" color="#fff" fontSize="xl">
-            به علت عدم توانایی ارتباط با زرین پال لطفا بعدا مجددا تلاش کنید یا در صورت برطرف نشدن
-            مشکل با پشتیبانی تماس بگیرید
-          </Text>
-          <Button
-            variant="solid"
-            style={{
-              marginTop: 36,
-              borderRadius: 10,
-            }}
-            onPress={() => router.navigate("/")}
-          >
-            بازگشت به صفحه اصلی
-          </Button>
-        </View>
+        <ReserveTicket item={currentData} type={activeTab} setError={setError} />
       )}
     </View>
   );
